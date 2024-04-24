@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Namdhinggo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                namdhinggo: ['Namdhinggo']
+              }
+            }
+          }
+        }
+    </script>
+    <title>Register</title>
+</head>
+<body class="bg-gray-300 flex flex-col items-center justify-center h-screen font-namdhinggo">
+    <div class="bg-slate-100 shadow-lg rounded-xl px-8 py-6">
+        <h2 class="text-center text-2xl font-bold mb-6">Register</h2>
+        <form action="/register" method="post">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required
+                       class="placeholder:text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-gray-100">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required
+                       class="placeholder:text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:bg-gray-100">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required
+                       class="placeholder:text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:bg-gray-100">
+            </div>
+            <div class="mb-4">
+                <label for="fullName" class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                <input type="text" id="fullName" name="fullname" placeholder="Enter your full name" required
+                       class="placeholder:text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:bg-gray-100">
+            </div>
+            
+            <div class="mb-6">
+                <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address" required
+                       class="placeholder:text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:bg-gray-100">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-slate-500 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="m-4 text-center">
+        <p class="text-gray-600">Already have an account? <a href="/login" class="text-blue-600 hover:underline">Login</a></p>
+    </div>
+</body>
+</html>

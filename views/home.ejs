@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Namdhinggo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            /* .image-container {
+                position: relative;
+                display: inline-block;
+                margin: 10px;
+            }
+            .image-container img {
+                display: block;
+                width: 200px; 
+                height: auto;
+                transition: transform 0.3s ease-in-out;
+            }
+            .image-container img:hover {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            .image-title {
+                position: absolute;
+                bottom: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(255, 255, 255, 0.7);
+                padding: 5px;
+                border-radius: 5px;
+                font-size: 14px;
+                font-weight: bold;
+            } */
+        </style>
+        <title>Galeri Foto</title>
+    </head>
+    <body class="bg-gray-300 font-namdhinggo">
+        <nav class="p-2 fixed w-full top-0 z-50">
+            <div class="mx-auto container flex justify-between items-center">
+                <div class="flex items-center space-x-7">
+                    <div class="w-12"><img src='/img/logo.png' alt="logo"></div>
+                    <% if (user) { %>
+                        <p class="text-gray-700 hover:text-white">Welcome, <%= user.username %></p>
+                    <% } else { %>
+                        <a href="/login" class="text-gray-700 hover:text-white">Login</a>
+                    <% } %>
+                </div>
+                
+                <div>
+                    <a href="/home" class="text-gray-700 hover:text-white">Home</a>
+                    <a href="/about" class="text-gray-700 hover:text-white mx-4">About</a>
+                    <a href="/upload" class="text-gray-700 hover:text-white">Upload</a>
+                </div>
+                <a href="/login" class="text-gray-700 hover:text-white mx-7">Logout</a>
+            </div>
+        </nav>
+        <div class="container mx-auto mt-20">
+            <div class="grid grid-cols-3 gap-5">
+                <% images.forEach(function(image) { %>
+                    <div class="relative">
+                        <a href="/post/<%= image._id %>"> <!-- Tautan ke halaman detail -->
+                            <img src="/uploads/<%= image.imagePath %>" alt="<%= image.title %>" class="w-full h-full transform transition duration-300 hover:scale-105 hover:opacity-70" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-50 p-2 text-center text-sm font-bold">
+                                <%= image.title %>
+                            </div>
+                        </a>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </body>
+    </html>

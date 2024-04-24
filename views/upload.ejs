@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Namdhinggo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                namdhinggo: ['Namdhinggo']
+              }
+            }
+          }
+        }
+      </script>
+    <title>Upload</title>
+</head>
+<body class="bg-gray-300 font-namdhinggo">
+    <nav class=" p-2 fixed w-full top-0 z-50">
+        <div class="mx-auto container flex justify-between items-center">
+            <div class="flex items-center space-x-7">
+                <div class="w-12"><img src='https://cdn.icon-icons.com/icons2/1875/PNG/512/imagegallery_120168.png' alt="logo"></div>
+                
+            </div>
+            <div class="">
+              <a href="/home    " class="text-gray-700 hover:text-white">Home</a>
+                <a href="/about" class="text-gray-700 hover:text-white mx-4">About</a>
+                <a href="/upload" class="text-gray-700 hover:text-white">Upload</a>
+            </div>
+            <a href="/login" class="text-gray-700 hover:text-white mx-7 ">Logout</a>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-32">
+        <h1 class="text-3xl font-semibold mb-10 mx-4">Upload Image</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="m-4">
+                <label for="image" class="block text-gray-700 font-bold mb-2">Choose Image:</label>
+                <input type="file" name="imagePath" accept="image/*" id="image" class="border rounded  py-2 px-2 w-full bg-gray-100">
+            </div>
+            <div class="m-4">
+                <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
+                <input type="text" name="title" id="title" class="border rounded-md py-2 px-3 w-full bg-gray-100">
+            </div>
+            <div class="m-4">
+                <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
+                <textarea name="description" id="description" class="border rounded-md py-2 px-3 w-full h-32 bg-gray-100"></textarea>
+            </div>
+            <button type="submit" class="bg-slate-500 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

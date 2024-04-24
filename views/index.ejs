@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Namdhinggo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                namdhinggo: ['Namdhinggo']
+              }
+            }
+          }
+        }
+    </script>
+    <title>Galeri Foto</title>
+</head>
+<body class=" font-namdhinggo bg-cover bg-fixed "  style="background-image: url('/img/bg.webp');">
+  <div class="text-center my-64 ">
+        <div class="text-4xl mb-8 ">Welcome To Photo Gallery</div>
+        <blockquote class="mb-2 italic font-thin text-lg">let's experience it</blockquote>
+        <div class="w-40 h-40 mx-auto mt-11 group relative"> 
+          <div class="w-full h-full bg-gray-400 rounded-lg shadow-lg
+          group-hover:rotate-180 origin-bottom-left transition duration-1000 blur-none hover:blur-md" >
+          </div>
+          <a href="/login" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-0
+          group-hover:opacity-100 duration-300 bg-gray-600 hover:bg-gray-800 rounded-full border px-5 py-2">Login</a>
+      </div>
+    </div>
+</body>
+</html>

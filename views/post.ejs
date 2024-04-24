@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-200">
+    <div class="flex flex-col">
+        <%- include('./partials/navbar.ejs') %>
+    <div class="container mx-auto md:px-10 md:py-4 my-20 lg:mt-28 bg-gray-100 md:h-auto h-screen md:w-2/5">
+        <!-- User info -->
+        <div class="flex justify-between items-center py-3 border-b border-gray-300 mx-3">
+            <!-- Nama pengupload di kiri atas -->
+<p class="text-lg md:text-xl text-gray-700 font-semibold">
+    <% if (foto && foto.userid && foto.userid.username) { %>
+        <%= foto.userid.username %>
+    <% } else { %>
+        Nama Pengupload
+    <% } %>
+</p>
+
+            <!-- Tanggal upload di kanan atas -->
+            <div class="flex items-center gap-5">
+                <p class="text-xs md:text-sm text-gray-500 ml-4"><%= uploadDate.toDateString() %></p>
+                <!-- Tombol Like -->
+                <!-- Tombol Like -->
+    <form action="/likefoto" method="post">
+        <!-- Input hidden untuk menyimpan fotoID -->
+        <input type="hidden" name="fotoID" value="<%= foto._id %>">
+        <button type="submit" class="like-button">
+            <!-- Tambahkan ikon hati -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#000000"/>
+            </svg>
+        </button>
+        <!-- Tampilkan jumlah likes di bawah tombol Like -->
+        <span class="likes-count"><%= likefoto.length %> Likes</span>
+    </form>
+<!-- Script JavaScript untuk memperbarui jumlah likes -->
+<script>
+    const likeButton = document.querySelector('.like-button');
+    const likesCount = document.querySelector('.likes-count');
+
+    likeButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        const fotoID = likeButton.parentNode.querySelector('input[name="fotoID"]').value;
+
+        try {
+            const response = await fetch('/likefoto', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ fotoID })
+            });
+
+            if (!response.ok) {
+                throw new Error('Like failed');
+            }
+
+            const data = await response.json();
+
+            // Update likes count on the page
+            likesCount.textContent = data.likes;
+        } catch (error) {
+            console.error('Error liking photo:', error);
+        }
+    });
+</script>
+
+
+
+                
+                
+                
+                
+                
+                <% if (isOwner) { %>
+                    <form id="deleteForm" method="POST" action="/post/<%= foto._id %>?_method=DELETE">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">Hapus</button>
+                    </form>
+                <% } %>
+
+                <!-- Tombol Edit (jika owner) -->
+                <% if (isOwner) { %>
+                    <a href="/post/<%= foto._id %>/edit-post">Edit</a>
+                <% } %>
+
+            </div>
+        </div>
+        
+        
+        <div class="py-3 mx-3">
+            <h2 class="font-bold text-xl md:text-2xl text-gray-800 mb-3"><%= foto.title %></h2>
+            <p class="text-gray-600 text-base md:text-lg mb-4"><%= foto.description %></p>
+        </div>
+
+        <!-- Tambahkan form untuk mengirim komentar -->
+        <form action="/post/<%= foto._id %>/comment" method="post">
+            <!-- Input untuk isi komentar -->
+            <input type="text" name="comment" placeholder="Tambahkan komentar...">
+            <!-- Tombol kirim komentar -->
+            <button type="submit">Kirim</button>
+        </form>
+        
+        <div class="max-w-full overflow-hidden">
+            <img src="/uploads/<%= foto.imagePath %>" alt="<%= foto.title %>" class="w-full h-auto">
+        </div>
+    </div>
+    </div>
+</body>
+</html>

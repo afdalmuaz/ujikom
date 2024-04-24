@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-200">
+    <div class="flex flex-col">
+        <% include('./partials/navbar.ejs') %>
+        <div class="container mx-auto md:px-10 md:py-4 my-20 lg:mt-28 bg-gray-100 md:h-auto h-screen md:w-2/5">
+            <!-- Form untuk mengedit post -->
+            <form action="/post/<%= foto._id %>/edit" method="post">
+                <div class="py-3 mx-3">
+                    <label for="title" class="font-bold text-xl md:text-2xl text-gray-800 mb-3">Judul</label>
+                    <input type="text" id="title" name="title" value="<%= foto.title %>" class="border border-gray-300 rounded-lg px-3 py-2 mb-4 w-full">
+                </div>
+                <div class="py-3 mx-3">
+                    <label for="description" class="font-bold text-xl md:text-2xl text-gray-800 mb-3">Deskripsi</label>
+                    <textarea id="description" name="description" class="border border-gray-300 rounded-lg px-3 py-2 mb-4 w-full" rows="4"><%= foto.description %></textarea>
+                </div>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
